@@ -4,3 +4,4 @@ REF#*
 /log.txt
 /build/
 /dist/
+/__pycache__

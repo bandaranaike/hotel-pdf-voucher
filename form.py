@@ -48,6 +48,8 @@ if __name__ == "__main__":
             form_fields[label] = Entry(root)
         form_fields[label].bind("<Return>", form_fields[label].focus_set())
         form_fields[label].grid(row=row, column=1, ipadx=100)
+        if label == "Booking Number":
+            form_fields[label].insert(END, "s")
         row = row + 1
 
     # create a Submit Button and place into the root window
