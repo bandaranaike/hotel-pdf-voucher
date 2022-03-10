@@ -145,7 +145,7 @@ def create_pdf(data):
         pdf.multi_cell(0, line_height, f" Driver accommodation required : {driver_accommodation}", border=1, ln=1)
 
         # Row 9 : Remarks
-        pdf.multi_cell(0, line_height, " Payments : Please be kind enough  to settle the bill before the checkout",
+        pdf.multi_cell(0, line_height, " Payments : Please be kind enough  to settle the bill before check-out",
                        border=1, ln=1)
         pdf.ln(3)
         # Row 9 : Box
