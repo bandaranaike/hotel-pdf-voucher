@@ -1,3 +1,6 @@
 test.pdf
 REF#*
 .idea/
+/log.txt
+/build/
+/dist/

@@ -4,85 +4,154 @@ import qrcode_gen
 
 
 def create_pdf(data):
-    page_width = 210
-    page_height = 297
-    print(data)
-    [booking_confirm_date, booking_number, guest_name, guest_family_name, nationality, rate_per_night, meal_plan,
-     adults_count, teen_count, kids_count, baby_count, checking_date, checkout_date, number_of_delux_rooms,
-     number_of_river_view_rooms, driver_accommodation] = data
+    try:
+        page_width = 210
+        page_height = 297
 
-    print(data)
+        [booking_confirm_date, booking_number, guest_name, guest_family_name, nationality, rate_per_night, meal_plan,
+         adults_count, teen_count, kids_count, baby_count, checking_date, checkout_date, number_of_delux_rooms,
+         number_of_river_view_rooms, driver_accommodation] = data
 
-    qrcode_gen.generate_qr(booking_number)
+        qrcode_gen.generate_qr(booking_number)
 
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Helvetica", size=20)
-    pdf.set_draw_color(209, 103, 0)
-    pdf.set_fill_color(209, 103, 0)
-    pdf.rect(0, 0, page_width, 0.5, style="FD")
-    pdf.set_text_color(209, 103, 0)
-    pdf.cell(10, 10, "Reservation Voucher")
-    pdf.image('logo.png', page_width - 50, 10, 40)
-    pdf.ln(20)
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Helvetica", size=20)
+        pdf.set_draw_color(209, 103, 0)
+        pdf.set_fill_color(209, 103, 0)
+        pdf.rect(0, 0, page_width, 0.5, style="FD")
+        pdf.set_text_color(209, 103, 0)
+        pdf.cell(10, 10, "Reservation Voucher")
+        pdf.image('logo.png', page_width - 50, 10, 40)
+        pdf.ln(20)
 
-    pdf.set_text_color(60, 60, 60)
-    # pdf.set_text_color(209, 103, 0)
-    pdf.set_font_size(10)
-    line_height = pdf.font_size * 2.5
-    col_width = pdf.epw / 4  # distribute content evenly
-    pdf.set_draw_color(220, 220, 220)
-    pdf.set_line_width(0.4)
+        pdf.set_text_color(60, 60, 60)
+        # pdf.set_text_color(209, 103, 0)
+        pdf.set_font_size(10)
+        line_height = pdf.font_size * 2.5
+        col_width = pdf.epw / 4  # distribute content evenly
+        pdf.set_draw_color(220, 220, 220)
+        pdf.set_line_width(0.4)
 
-    pdf.set_fill_color(238, 253, 242)
-    pdf.set_text_color(44, 132, 83)
-    pdf.multi_cell(95, line_height, f" Booking Confirmed On : {booking_confirm_date}", border=1, ln=3, fill=True)
+        pdf.set_fill_color(238, 253, 242)
+        pdf.set_text_color(44, 132, 83)
+        pdf.multi_cell(95, line_height, f" Booking Confirmed On : {booking_confirm_date}", border=1, ln=3, fill=True)
 
-    pdf.set_text_color(60, 60, 60)
-    pdf.multi_cell(95, line_height, f"Booking Number : {booking_number} ", border=1, ln=1, align="R")
+        pdf.set_text_color(60, 60, 60)
+        pdf.multi_cell(95, line_height, f"Booking Number : {booking_number} ", border=1, ln=1, align="R")
 
-    pdf.multi_cell(0, line_height, f" Guest name : {guest_name}", border=1, ln=1)
+        pdf.multi_cell(0, line_height, f" Guest name : {guest_name}", border=1, ln=1)
 
-    pdf.multi_cell(95, line_height, f" Guest Family Name : {guest_family_name}", border=1, ln=3)
-    pdf.multi_cell(95, line_height, f" Nationality : {nationality}", border=1, ln=1)
+        pdf.multi_cell(95, line_height, f" Guest Family Name : {guest_family_name}", border=1, ln=3)
+        pdf.multi_cell(95, line_height, f" Nationality : {nationality}", border=1, ln=1)
 
-    pdf.multi_cell(95, line_height, f" Rate per night : {rate_per_night}", border=1, ln=3)
-    pdf.multi_cell(95, line_height, f" Meal plan : {meal_plan}", border=1, ln=1)
+        pdf.multi_cell(95, line_height, f" Rate per night : {rate_per_night}", border=1, ln=3)
+        pdf.multi_cell(95, line_height, f" Meal plan : {meal_plan}", border=1, ln=1)
 
-    pdf.multi_cell(54, line_height * 2, " Number of pax : 10", border=1, ln=3)
-    pdf.multi_cell(34, line_height, " Adults 18+", border=1, ln=3)
-    pdf.multi_cell(34, line_height, " Teen 12-17", border=1, ln=3)
-    pdf.multi_cell(34, line_height, " Kids 5-11", border=1, ln=3)
-    pdf.multi_cell(34, line_height, " Baby 0-4", border=1, ln=1)
+        pdf.multi_cell(54, line_height * 2, " Number of pax : 10", border=1, ln=3)
+        pdf.multi_cell(34, line_height, " Adults 18+", border=1, ln=3)
+        pdf.multi_cell(34, line_height, " Teen 12-17", border=1, ln=3)
+        pdf.multi_cell(34, line_height, " Kids 5-11", border=1, ln=3)
+        pdf.multi_cell(34, line_height, " Baby 0-4", border=1, ln=1)
 
-    pdf.multi_cell(54, line_height, "", border=0, ln=3)
-    pdf.multi_cell(34, line_height, f" {adults_count}", border=1, ln=3)
-    pdf.multi_cell(34, line_height, f" {teen_count}", border=1, ln=3)
-    pdf.multi_cell(34, line_height, f" {kids_count}", border=1, ln=3)
-    pdf.multi_cell(34, line_height, f" {baby_count}", border=1, ln=1)
+        pdf.multi_cell(54, line_height, "", border=0, ln=3)
+        pdf.multi_cell(34, line_height, f" {adults_count}", border=1, ln=3)
+        pdf.multi_cell(34, line_height, f" {teen_count}", border=1, ln=3)
+        pdf.multi_cell(34, line_height, f" {kids_count}", border=1, ln=3)
+        pdf.multi_cell(34, line_height, f" {baby_count}", border=1, ln=1)
 
-    pdf.multi_cell(70, line_height, f" Checking Date : {checking_date}", border=1, ln=3)
-    pdf.multi_cell(70, line_height, f" Checkout Date : {checkout_date}", border=1, ln=3)
-    pdf.multi_cell(50, line_height, " Number of nights : 4", border=1, ln=1)
+        pdf.multi_cell(70, line_height, f" Checking Date : {checking_date}", border=1, ln=3)
+        pdf.multi_cell(70, line_height, f" Checkout Date : {checkout_date}", border=1, ln=3)
+        pdf.multi_cell(50, line_height, " Number of nights : 4", border=1, ln=1)
 
-    pdf.multi_cell(45, line_height * 2, " Number of rooms : 4", border=1, ln=3)
-    pdf.multi_cell(85, line_height, " River view room with AC", border=1, ln=3)
-    pdf.multi_cell(30, line_height, " Type : DBL", border=1, ln=3)
-    pdf.multi_cell(30, line_height, f" Qty : {number_of_delux_rooms}", border=1, ln=1)
+        pdf.multi_cell(45, line_height * 2, " Number of rooms : 4", border=1, ln=3)
+        pdf.multi_cell(85, line_height, " River view room with AC", border=1, ln=3)
+        pdf.multi_cell(30, line_height, " Type : DBL", border=1, ln=3)
+        pdf.multi_cell(30, line_height, f" Qty : {number_of_delux_rooms}", border=1, ln=1)
 
-    pdf.multi_cell(45, line_height, "", border=0, ln=3)
-    pdf.multi_cell(85, line_height, " River view room with AC", border=1, ln=3)
-    pdf.multi_cell(30, line_height, " Type : DBL", border=1, ln=3)
-    pdf.multi_cell(30, line_height, f" Qty : {number_of_river_view_rooms}", border=1, ln=1)
+        pdf.multi_cell(45, line_height, "", border=0, ln=3)
+        pdf.multi_cell(85, line_height, " River view room with AC", border=1, ln=3)
+        pdf.multi_cell(30, line_height, " Type : DBL", border=1, ln=3)
+        pdf.multi_cell(30, line_height, f" Qty : {number_of_river_view_rooms}", border=1, ln=1)
 
-    pdf.multi_cell(0, line_height, f" Driver accommodation required : {driver_accommodation}", border=1, ln=1)
-    pdf.multi_cell(page_width - 50, line_height * 3.4, " ", border=1, ln=3)
-    pdf.image(f'{booking_number}.png', page_width - 40, w=30)
-    pdf.rect(page_width - 40, y=118.2, h=30, w=30)
-    pdf.ln(line_height)
-    pdf.set_font_size(8)
-    pdf.set_text_color(150, 150, 150)
-    pdf.multi_cell(95, line_height, "Generated by Thotupola Residence", ln=3)
-    pdf.multi_cell(95, line_height, "https://thotupolaresidence.lk", link="https://thotupolaresidence.lk", ln=1,
-                   align="R")
-    pdf.output('test.pdf', 'F')
+        pdf.multi_cell(0, line_height, f" Driver accommodation required : {driver_accommodation}", border=1, ln=1)
+        pdf.multi_cell(page_width - 50, line_height * 3.4, " ", border=1, ln=3)
+        pdf.image(f'{booking_number}.png', page_width - 40, w=30)
+        pdf.rect(page_width - 40, y=118.2, h=30, w=30)
+        pdf.ln(line_height)
+        pdf.set_font_size(8)
+        pdf.set_text_color(150, 150, 150)
+        pdf.multi_cell(95, line_height, "Generated by Thotupola Residence", ln=3)
+        pdf.multi_cell(95, line_height, "https://thotupolaresidence.lk", link="https://thotupolaresidence.lk", ln=1,
+                       align="R")
+        pdf.output(f'{booking_number}.pdf')
+
+        qrcode_gen.delete_qr(booking_number)
+
+    except AssertionError:
+        log_message("AssertionError")
+    except AttributeError:
+        log_message("AttributeError")
+    except EOFError:
+        log_message("EOFError")
+    except FloatingPointError:
+        log_message("FloatingPointError")
+    except GeneratorExit:
+        log_message("GeneratorExit")
+    except ImportError:
+        log_message("ImportError")
+    except IndexError:
+        log_message("IndexError")
+    except KeyError:
+        log_message("KeyError")
+    except KeyboardInterrupt:
+        log_message("KeyboardInterrupt")
+    except MemoryError:
+        log_message("MemoryError")
+    except NameError:
+        log_message("NameError")
+    except NotImplementedError:
+        log_message("NotImplementedError")
+    except OSError as er:
+        log_message(str(er))
+    except OverflowError:
+        log_message("OverflowError")
+    except ReferenceError:
+        log_message("ReferenceError")
+    except RuntimeError:
+        log_message("RuntimeError")
+    except StopIteration:
+        log_message("StopIteration")
+    except SyntaxError:
+        log_message("SyntaxError")
+    except IndentationError:
+        log_message("IndentationError")
+    except TabError:
+        log_message("TabError")
+    except SystemError:
+        log_message("SystemError")
+    except SystemExit:
+        log_message("SystemExit")
+    except TypeError:
+        log_message("TypeError")
+    except UnboundLocalError:
+        log_message("UnboundLocalError")
+    except UnicodeError:
+        log_message("UnicodeError")
+    except UnicodeEncodeError:
+        log_message("UnicodeEncodeError")
+    except UnicodeDecodeError:
+        log_message("UnicodeDecodeError")
+    except UnicodeTranslateError:
+        log_message("UnicodeTranslateError")
+    except ValueError:
+        log_message("ValueError")
+    except ZeroDivisionError:
+        log_message("ZeroDivisionError")
+    except Exception as e:
+        log_message(str(e))
+
+
+def log_message(message):
+    with open('log.txt', 'w') as f:
+        print("Something went wrong", message, file=f)
