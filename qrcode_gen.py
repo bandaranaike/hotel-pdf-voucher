@@ -21,7 +21,7 @@ def generate_qr(reference, data=None):
 
     img = qr.make_image(image_factory=StyledPilImage, module_drawer=RoundedModuleDrawer(),
                         color_mask=RadialGradiantColorMask(center_color=(255, 159, 53), edge_color=(27, 39, 51)))
-    img.save(f"{reference}.png")
+    img.save(reference)
 
 
 def delete_qr(reference):

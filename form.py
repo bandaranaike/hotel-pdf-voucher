@@ -1,8 +1,9 @@
 # import tkinter module
 import re
 from tkinter import *
-from main import create_pdf
+from pdf_generators.booking_confirmation import create_pdf
 from tkcalendar import DateEntry
+from execption_handler import run
 
 # Creating Labels
 form_items = {
@@ -32,8 +33,7 @@ form_items = {
     },
     "nationality": {
         "label": "Nationality",
-        "type": "dropdown",
-        "options": {"Sri Lankan", "French", "Australia", "America"}
+        "type": "text",
     },
     "rate_per_night": {
         "label": "Rate per Night",
@@ -45,7 +45,7 @@ form_items = {
         "options": {"Yes", "No"}
     },
     "bb": {
-        "label": "Bed adn Breakfast",
+        "label": "Bed and Breakfast",
         "type": "dropdown",
         "options": {"Yes", "No"}
     },
@@ -154,7 +154,7 @@ def generate_pdf():
             else:
                 form_values.append(form_fields[label_1].get())
             # form_fields[label_1].delete(0, END)
-    create_pdf(form_values)
+    run(create_pdf, form_values)
     form_values.clear()
 
 
@@ -190,7 +190,7 @@ if __name__ == "__main__":
             form_fields[label] = OptionMenu(root, string_vars[label], *form_item.get('options'))
         elif field_type == "text":
             form_fields[label] = Entry(root)
-        form_fields[label].config(validate='focusout')
+
         form_fields[label].bind("<Return>", form_fields[label].focus_set())
         form_fields[label].grid(row=row, column=1, ipadx=120, sticky="W")
         # if label == "booking_number":
