@@ -1,3 +1,6 @@
+from datetime import datetime
+import env
+
 from pdf_generators.pdf_template import *
 
 
@@ -185,4 +188,4 @@ def create_pdf(data):
     pdf.set_font("Helvetica")
     pdf_footer()
 
-    pdf.output("aaa.pdf")
+    pdf.output(f"{env.dirname}/{booking_number}.pdf")

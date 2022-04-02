@@ -1,3 +1,7 @@
+from datetime import datetime
+import env
+
+
 def run(func, params):
     try:
         func(params)
@@ -55,5 +59,11 @@ def run(func, params):
 
 
 def log_message(*message):
-    with open('log.txt', 'w') as f:
-        print("Something went wrong", *message, file=f)
+    file = open(f'{env.dirname}/log.txt', 'a')
+    file.write(str(datetime.now()))
+    file.write(" : ")
+    file.write(str(*message))
+    file.write("\n")
+    file.close()
+    # with open('error.txt', 'w') as f:
+    #     print("Something went wrong", *message, file=f)
