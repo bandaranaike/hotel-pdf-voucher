@@ -1,4 +1,5 @@
-from base_form import BaseForm
+from forms.base_form import BaseForm
+from pdf_generators.booking_confirmation import create_pdf
 
 confirmation_form_data = {
     "booking_confirm_date": {
@@ -7,11 +8,13 @@ confirmation_form_data = {
     },
     "tr_ref_no": {
         "label": "TR Reference Number",
-        "type": "text"
+        "type": "text",
+        "default": "TRN#"
     },
     "tour_number": {
         "label": "Tour Number",
-        "type": "text"
+        "type": "text",
+        "default": "TN#"
     },
     "checking_date": {
         "label": "Checking Date",
@@ -31,7 +34,8 @@ confirmation_form_data = {
     },
     "rate_per_night": {
         "label": "Rate per Night",
-        "type": "text"
+        "type": "text",
+        "default": "4.6"
     },
     "ro": {
         "label": "Room Only",
@@ -100,7 +104,8 @@ confirmation_form_data = {
     "cooking_demo": {
         "label": "Cooking Demo",
         "type": "dropdown",
-        "options": {"Yes", "No"}
+        "options": {"Yes", "No"},
+        "default": "No"
     },
     "market_visit": {
         "label": "Market Visit",
@@ -118,10 +123,13 @@ confirmation_form_data = {
     },
     "remark": {
         "label": "Remark",
-        "type": "textarea"
+        "type": "textarea",
+        "default": "ddddd"
     }
 }
 
-base_form = BaseForm(confirmation_form_data)
 
-base_form.generate_form(confirmation_form_data)
+def call_form(frame):
+    base_form = BaseForm(confirmation_form_data)
+    base_form.run_pdf_generator(create_pdf)
+    base_form.generate_form(frame)
