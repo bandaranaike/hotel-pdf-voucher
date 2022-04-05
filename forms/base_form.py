@@ -33,7 +33,7 @@ class BaseForm:
                 self.form_values.append(cleaned_text)
                 self.form_fields[label].delete("1.0", END)
             else:
-                accepts = field_type_1 = form_item.get('accepts')
+                accepts = form_item.get('accepts')
                 if accepts and accepts == "number" and self.form_fields[label].get() == "":
                     self.form_values.append(0)
                 else:
@@ -73,3 +73,4 @@ class BaseForm:
         submit = Button(frame, text="Create the Confirmation Voucher", fg="White", bg="Green",
                         command=self.generate_pdf)
         submit.grid(row=row, column=1)
+

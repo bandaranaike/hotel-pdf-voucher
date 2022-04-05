@@ -36,7 +36,7 @@ def pdf_header(title=""):
     pdf.rect(0, 0, page_width, 0.5, style="FD")
 
     # Logo
-    logo = env.dirname.join("/images/logo.png")
+    logo = f"{env.dirname}/images/logo.png"
     if exists(logo):
         pdf.image(logo, 10, 10, 40)
     else:
