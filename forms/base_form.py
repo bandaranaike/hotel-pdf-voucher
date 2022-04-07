@@ -46,31 +46,39 @@ class BaseForm:
     def generate_form(self, frame):
 
         row = 1
+        col = 0
 
         for label, form_item in self.form_items.items():
             field_type = form_item.get('type')
-            Label(frame, text=form_item.get("label") + " :  ", anchor='se').grid(row=row, column=0, sticky="E")
+            Label(frame, text=form_item.get("label") + " :  ", anchor='se').grid(row=row, column=col, sticky="E")
             if field_type == "date":
                 self.form_fields[label] = DateEntry(frame, selectmode='day', date_pattern='yyyy-MM-dd')
             elif field_type == "textarea":
-                self.form_fields[label] = Text(frame, width=15, height=4)
+                self.form_fields[label] = Text(frame, width=10, height=4)
             elif field_type == "dropdown":
                 self.string_vars[label] = StringVar(frame)
                 self.form_fields[label] = OptionMenu(frame, self.string_vars[label], *form_item.get('options'))
             elif field_type == "text":
                 self.form_fields[label] = Entry(frame)
 
+            col = col + 1
+
             self.form_fields[label].bind("<Return>", self.form_fields[label].focus_set())
-            self.form_fields[label].grid(row=row, column=1, ipadx=120, sticky="W")
+            self.form_fields[label].grid(row=row, column=col, ipadx=60, sticky="W")
             if form_item.get('default'):
                 if field_type == "text" or field_type == "textarea":
                     self.form_fields[label].insert(END, form_item.get('default'))
                 elif field_type == "dropdown":
                     self.string_vars[label].set(form_item.get('default'))
-            row = row + 1
 
+            if col == 3:
+                col = 0
+                row = row + 1
+            else:
+                col = col + 1
+
+        row = row + 1
         # create a Submit Button and place into the root window
         submit = Button(frame, text="Create the Confirmation Voucher", fg="White", bg="Green",
                         command=self.generate_pdf)
         submit.grid(row=row, column=1)
-

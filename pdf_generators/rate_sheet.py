@@ -5,7 +5,7 @@ import env
 def create_pdf(data):
     # [] = data
 
-    pdf_header(title="Summer Rate Sheet")
+    pdf = pdf_header(title="Summer Rate Sheet")
 
     price_items = {
         "suit": {
@@ -76,10 +76,11 @@ def create_pdf(data):
                 pdf.multi_cell(45, line_height, price_str, border=1, ln=3, align="C")
             pdf.ln()
 
-    pdf_footer()
+    pdf.ln(4)
 
-    pdf.output(f"{env.dirname}/summer-rate-sheet.pdf")
+    if len(data['special_note'].get('1.0', 'end-1c')) != 0:
+        pdf.multi_cell(0, line_height / 1.5, f"{data['special_note'].get('1.0', 'end')} ", border=0, ln=1)
 
-#
-# def rates(title, triple="", double="", single=""):
-#
+    pdf_footer(pdf)
+
+    pdf_output(pdf, "summer-rate-sheet")

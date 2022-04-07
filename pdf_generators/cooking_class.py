@@ -5,7 +5,7 @@ import env
 def create_pdf(data):
     [demo_price, market_visit, below_6, between_6_12, above_12] = data
 
-    pdf_header("Cooking Class Rate Sheet")
+    pdf = pdf_header("Cooking Class Rate Sheet")
 
     pdf.multi_cell(120, line_height, " Cookery Demonstration with Meal (Per Person) ", ln=3, border=1)
     pdf.multi_cell(70, line_height, f" {demo_price} ", ln=1, border=1)
@@ -22,6 +22,6 @@ def create_pdf(data):
     pdf.multi_cell(120, line_height, " Children Above 12 years ", ln=3, border=1)
     pdf.multi_cell(70, line_height, f" {above_12} ", ln=1, border=1)
 
-    pdf_footer()
+    pdf_footer(pdf)
 
-    pdf.output(f"{env.dirname}/cooking_class.pdf")
+    pdf_output(pdf, "cooking_class")

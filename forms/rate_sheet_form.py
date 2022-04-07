@@ -6,32 +6,32 @@ price_items = {
     "suit": {
         "name": "Suit with A/C",
         "rooms": ["d", "t"],
-        "color": [224, 155, 62]
+        "color": "#e09b3e"
     },
     "supper-deluxe": {
         "name": "Super Deluxe with A/C",
         "rooms": ["s", "d", "t"],
-        "color": [62, 108, 174]
+        "color": "#3e6cae"
     },
     "standard": {
         "name": "Standard room with A/C",
         "rooms": ["s", "d"],
-        "color": [197, 94, 53]
+        "color": "#c55e35"
     },
     "tree-house": {
         "name": "Tree House",
         "rooms": ["s", "d"],
-        "color": [51, 110, 139]
+        "color": "#336e8b"
     },
     "suit-cottage": {
         "name": "Suite cottage with A/C",
         "rooms": ["d", "t", "q"],
-        "color": [71, 60, 58]
+        "color": "#472c3a"
     },
     "family": {
         "name": "Family suite with river view and A/C",
         "rooms": ["d", "t", "q"],
-        "color": [139, 121, 109]
+        "color": "#8b796d"
     }
 }
 
@@ -70,7 +70,8 @@ def create_multi_col_form(frame):
 
     for price_item_index, price_item in price_items.items():
         row = row + 1
-        Label(frame, text=f'   {price_item.get("name")} ', anchor="se", font="Helvetica 9 bold", foreground="#525",
+        Label(frame, text=f'   {price_item.get("name")} ', anchor="se", font="Helvetica 9 bold",
+              foreground=price_item.get('color'),
               ).grid(row=row, column=0, columnspan=4,
                      sticky="W")
 
@@ -89,5 +90,16 @@ def create_multi_col_form(frame):
                 form_fields[price_item_index][room_abb][meal_plan] = Entry(frame, width=4)
                 form_fields[price_item_index][room_abb][meal_plan].grid(row=row, column=col, ipadx=40, sticky="W")
 
-    row = row + 3
+    row = row + 1
+    Label(frame, text="  ").grid(row=row, column=0, sticky="E")
+
+    row = row + 1
+    Label(frame, text=" Special Note ").grid(row=row, column=0, sticky="E")
+    form_fields['special_note'] = Text(frame, width=24, height=4)
+    form_fields['special_note'].grid(row=row, column=1, ipadx=40, sticky="W", columnspan=4)
+
+    row = row + 1
+    Label(frame, text="  ").grid(row=row, column=0, sticky="E")
+
+    row = row + 1
     Button(frame, text="  Create Rate Sheet  ", fg="White", bg="Green", command=generate_pdf).grid(row=row, column=1)

@@ -1,24 +1,23 @@
 import os
-
-from fpdf import FPDF
-
+from fpdf import FPDF, FPDFException
 from os.path import exists
-
 import qrcode_gen
-
 import env
+import random
 
 page_width = 210
-pdf = FPDF()
 
-pdf.set_font("Helvetica", size=20)
-
-line_height = pdf.font_size * 1.1
+line_height = 8
 
 dirname = os.path.dirname(__file__)
 
 
 def pdf_header(title=""):
+    pdf = FPDF()
+
+    pdf.set_font("Helvetica", size=20)
+
+    line_height = pdf.font_size * 1.1
     # Contact details
     address = "162/1, Panasara Mw, Halloluwa"
     email = "info@thotupolaresidence.lk"
@@ -72,9 +71,11 @@ def pdf_header(title=""):
 
     pdf.ln(8)
 
+    return pdf
 
-def pdf_footer():
-    pdf.ln(10)
+
+def pdf_footer(pdf):
+    pdf.ln(4)
 
     # Message
     pdf.set_font_size(9)
@@ -102,3 +103,11 @@ def get_info_qr(name, info):
         # Generate QR code for website
         qrcode_gen.generate_qr(file, info)
     return file
+
+
+def pdf_output(pdf, name="output"):
+    try:
+        pdf.output(f"{env.dirname}/outputs/{name}.pdf")
+    except PermissionError as e:
+        prefix = round(random.random() * 1000)
+        pdf_output(pdf, f"{name}-{prefix}")

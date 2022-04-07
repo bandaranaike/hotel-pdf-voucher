@@ -5,7 +5,6 @@ import env
 def run(func, params):
     try:
         func(params)
-        print("Params", params)
     except AssertionError as e:
         log_message("AssertionError : ", e)
     except AttributeError as e:
@@ -59,7 +58,7 @@ def run(func, params):
 
 
 def log_message(*message):
-    file = open(f'{env.dirname}/log.txt', 'a')
+    file = open('log.txt', 'a')
     file.write(str(datetime.now()))
     file.write(" : ")
     file.write(str(*message))

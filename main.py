@@ -3,10 +3,11 @@ from tkinter import ttk
 import forms.booking_confirmation_form as confirmation_form
 import forms.cooking_class_form as cooking_form
 import forms.rate_sheet_form as rate_form
+from forms.policies_form import PolicyForm
 
 root = tk.Tk()
 root.title("Thotupola PDF Generator")
-tab_controller = ttk.Notebook(root, width=800, height=700)
+tab_controller = ttk.Notebook(root, width=900, height=700)
 
 confirmation_voucher_tab = ttk.Frame(tab_controller)
 rate_sheet_tab = ttk.Frame(tab_controller)
@@ -27,6 +28,9 @@ cooking_form.call_form(cooking_class_tab)
 
 # Policies
 tab_controller.add(policies_tab, text="  Policies  ")
+policy_form = PolicyForm(policies_tab)
+policy_form.create_form()
+
 tab_controller.pack(expand=1, fill="both", )
 
 ttk.Label(confirmation_voucher_tab, text="Confirmation Voucher").grid(column=0, row=0, padx=30, pady=30)
