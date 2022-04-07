@@ -4,4 +4,4 @@ This application is more specified for a small hotel. Please change hard-corded 
 
 ### How to export as .exe
 
-`pyinstaller.exe --onefile -F --add-data "logo.png;." --icon=icon.ico main.py -w --hidden-import "babel.numbers"`
+`pyinstaller.exe  --add-data "logo.png;." --add-data "images/*;images" --add-data "outputs/*;outputs" --icon=icon.ico main.py -w --hidden-import "babel.numbers"`
