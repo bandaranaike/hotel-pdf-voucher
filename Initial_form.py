@@ -51,6 +51,8 @@ def create_pdf(data):
         pdf.multi_cell(page_width - 20, 10, "Booking Confirmation Voucher", align="R", ln=1)
         pdf.ln(8)
 
+        
+
         # Body style config
         pdf.set_draw_color(220, 220, 220)
         pdf.set_line_width(0.4)

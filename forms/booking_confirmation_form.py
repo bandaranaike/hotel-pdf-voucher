@@ -2,6 +2,11 @@ from forms.base_form import BaseForm
 from pdf_generators.booking_confirmation import create_pdf
 
 confirmation_form_data = {
+    "currency": {
+        "label": "Currency",
+        "type": "text",
+        "default": "USD"
+    },
     "booking_confirm_date": {
         "label": "Booking Confirmed Date",
         "type": "date"
@@ -35,27 +40,31 @@ confirmation_form_data = {
     "rate_per_night": {
         "label": "Rate per Night",
         "type": "text",
-        "default": "4.6"
+        "default": ""
     },
     "ro": {
         "label": "Room Only",
         "type": "dropdown",
-        "options": {"Yes", "No"}
+        "options": {"Yes", "No"},
+        "default": "No"
     },
     "bb": {
         "label": "Bed and Breakfast",
         "type": "dropdown",
-        "options": {"Yes", "No"}
+        "options": {"Yes", "No"},
+        "default": "No"
     },
     "hb": {
         "label": "Half Board",
         "type": "dropdown",
-        "options": {"Yes", "No"}
+        "options": {"Yes", "No"},
+        "default": "No"
     },
     "fb": {
         "label": "Full Board",
         "type": "dropdown",
-        "options": {"Yes", "No"}
+        "options": {"Yes", "No"},
+        "default": "No"
     },
     "adults": {
         "label": "Number of Adults",
@@ -107,15 +116,16 @@ confirmation_form_data = {
         "options": {"Yes", "No"},
         "default": "No"
     },
+    "cooking_demo_rate": {
+        "label": "Cooking Demo Rate",
+        "type": "text",
+        "accepts": "number"
+    },
     "market_visit": {
         "label": "Market Visit",
         "type": "dropdown",
-        "options": {"Yes", "No"}
-    },
-    "driver_accommodation": {
-        "label": "  Driver Accommodation Required",
-        "type": "dropdown",
-        "options": {"Yes", "No"}
+        "options": {"Yes", "No"},
+        "default": "No"
     },
     "travel_agent": {
         "label": "Travel Agent",
@@ -124,7 +134,7 @@ confirmation_form_data = {
     "remark": {
         "label": "Remark",
         "type": "textarea",
-        "default": "ddddd"
+        "default": ""
     }
 }
 

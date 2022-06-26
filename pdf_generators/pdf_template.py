@@ -15,6 +15,8 @@ dirname = os.path.dirname(__file__)
 def pdf_header(title=""):
     pdf = FPDF()
 
+    pdf.add_font('Rockwell', '', 'Rockwell.ttf', uni=True)
+    pdf.add_font('RobotoB', '', 'RobotoB.ttf', uni=True)
     pdf.set_font("Helvetica", size=20)
 
     line_height = pdf.font_size * 1.1
@@ -42,13 +44,15 @@ def pdf_header(title=""):
         pdf.multi_cell(1, ln=3)
 
     # Header
-    pdf.set_text_color(0, 55, 129)
+    pdf.set_text_color(0, 75, 130)
+    pdf.set_font("RobotoB", "", 20)
     pdf.multi_cell(page_width - 20, 10, title, align="R", ln=1)
     pdf.ln(8)
 
     # Body style config
     pdf.set_draw_color(220, 220, 220)
     pdf.set_line_width(0.4)
+    pdf.set_font("Helvetica")
     pdf.set_font_size(10)
     pdf.set_text_color(80, 80, 80)
 

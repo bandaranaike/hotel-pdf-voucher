@@ -79,6 +79,6 @@ class BaseForm:
 
         row = row + 1
         # create a Submit Button and place into the root window
-        submit = Button(frame, text="Create the Confirmation Voucher", fg="White", bg="Green",
+        submit = Button(frame, text="Create the PDF", fg="White", bg="Green",
                         command=self.generate_pdf)
         submit.grid(row=row, column=1)

@@ -2,15 +2,20 @@ from forms.base_form import BaseForm
 from pdf_generators.cooking_class import create_pdf
 
 form_data = {
+    "currency": {
+        "label": "Currency",
+        "type": "text",
+        "default": "USD"
+    },
     "cooking_demonstration": {
         "label": "Cookery Demonstration with Meal (Per Person)",
         "type": "text",
-        "default": "LKR 5500"
+        "default": ""
     },
     "market_visit": {
         "label": "Market Visit Per Tuk",
         "type": "text",
-        "default": "LKR 1500"
+        "default": ""
     },
     "below_6": {
         "label": "Children Below 6 years",
@@ -20,7 +25,7 @@ form_data = {
     "between_6_12": {
         "label": "Children Between 6 12 years",
         "type": "text",
-        "default": "LKR 2750"
+        "default": ""
     },
     "above_12": {
         "label": "Children Above 12 years",
