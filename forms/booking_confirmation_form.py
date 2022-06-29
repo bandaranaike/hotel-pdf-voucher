@@ -127,6 +127,10 @@ confirmation_form_data = {
         "options": {"Yes", "No"},
         "default": "No"
     },
+    "total_cost": {
+        "label": "Total Cost",
+        "type": "text"
+    },
     "travel_agent": {
         "label": "Travel Agent",
         "type": "text"

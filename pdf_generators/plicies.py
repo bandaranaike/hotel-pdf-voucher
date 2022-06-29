@@ -93,7 +93,7 @@ def create_pdf(data):
     add_header(pdf, "Driver Accommodation")
 
     pdf.write(5.5,
-              "Moving forward, we want be able to provide driver accommodations with respect to the current situation.")
+              "Moving forward, we wont be able to provide driver accommodations with respect to the current situation.")
 
     pdf.ln(10)
 

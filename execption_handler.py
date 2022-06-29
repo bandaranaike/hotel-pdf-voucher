@@ -61,8 +61,7 @@ def log_message(*message):
     file = open('log.txt', 'a')
     file.write(str(datetime.now()))
     file.write(" : ")
-    file.write(str(*message))
+    file.write(str(message[0]))
+    file.write(str(message[1]))
     file.write("\n")
     file.close()
-    # with open('error.txt', 'w') as f:
-    #     print("Something went wrong", *message, file=f)

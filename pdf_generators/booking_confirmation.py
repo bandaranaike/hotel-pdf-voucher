@@ -30,7 +30,7 @@ def create_pdf(data):
     # Data which coming from the form
     [currency, booking_confirm_date, tr_ref_no, booking_number, checking_date, checkout_date, guest_name, nationality,
      rate_per_night, ro, bb, hb, fb, adults, kids, baby, room_category, single, double,
-     triple, quad, family, cooking_demo, cooking_demo_rate, market_visit, travel_agent, remarks] = data
+     triple, quad, family, cooking_demo, cooking_demo_rate, market_visit, total_cost, travel_agent, remarks] = data
 
     # Row 1
     pdf.set_fill_color(73, 159, 67)
@@ -76,10 +76,8 @@ def create_pdf(data):
     label_text(pdf, 30, "Rate per night")
     value_text(pdf, 25, f"{currency} {rate_per_night}")
 
-    total = round(float(rate_per_night) * nu_of_nights, 2)
-    # pdf.multi_cell(55, line_height, f"  : {}", border=1, ln=1)
     label_text(pdf, 25, "Total")
-    value_text(pdf, 30, f"{currency} {total}", ln=1)
+    value_text(pdf, 30, f"{currency} {total_cost}", ln=1)
 
     # Row 4
     label_text(pdf, 43, "Meal plan", lh=2)
