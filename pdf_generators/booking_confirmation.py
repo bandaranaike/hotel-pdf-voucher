@@ -72,7 +72,7 @@ def create_pdf(data):
     label_text(pdf, 25, "Nationality")
     value_text(pdf, 55, nationality)
 
-    rate_per_night = round(float(rate_per_night), 2)
+    # rate_per_night = round(float(rate_per_night), 2)
     label_text(pdf, 30, "Rate per night")
     value_text(pdf, 25, f"{currency} {rate_per_night}")
 

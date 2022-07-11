@@ -135,9 +135,9 @@ confirmation_form_data = {
         "label": "Travel Agent",
         "type": "text"
     },
-    "remark": {
+    "remarks": {
         "label": "Remark",
-        "type": "textarea",
+        "type": "text",
         "default": ""
     }
 }

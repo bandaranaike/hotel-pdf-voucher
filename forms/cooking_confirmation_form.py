@@ -2,61 +2,66 @@ from forms.base_form import BaseForm
 from pdf_generators.cooking_confirmation import create_pdf
 
 confirmation_form_data = {
-    "currency": {
+    "cc_currency": {
         "label": "Currency",
         "type": "text",
         "default": "USD"
     },
-    "cooking_experience_date": {
+    "cc_cooking_experience_date": {
         "label": "Cooking Experience Date",
         "type": "date"
     },
-    "cooking_class_ref_no": {
+    "cc_cooking_class_ref_no": {
         "label": "Cooking Class Ref No",
         "type": "text",
         "default": "CCRN#"
     },
-    "guest_name": {
+    "cc_guest_name": {
         "label": "Guest Name",
         "type": "text",
         "default": ""
     },
-    "nationality": {
+    "cc_nationality": {
         "label": "Nationality",
         "type": "text",
         "default": ""
     },
-    "rate_per_person": {
+    "cc_rate_per_person": {
         "label": "Rate per person",
         "type": "text",
         "default": ""
     },
-    "adults_count": {
+    "cc_adults_count": {
         "label": "Number of Adults",
         "type": "text",
         "accepts": "number",
         "default": ""
     },
-    "kids_count": {
+    "cc_kids_count": {
         "label": "Number of Kids",
         "type": "text",
         "accepts": "number",
         "default": ""
     },
-    "babies_count": {
+    "cc_babies_count": {
         "label": "Number of Babies",
         "type": "text",
         "accepts": "number",
         "default": ""
     },
-    "travel_agent": {
+    "cc_travel_agent": {
         "label": "Travel Agent",
         "type": "text",
         "default": ""
     },
-    "remark": {
+    "cc_remark": {
         "label": "Remark",
-        "type": "textarea",
+        "type": "text",
+        "default": ""
+    },
+    "cc_total": {
+        "label": "Total",
+        "type": "text",
         "default": ""
     }
 }
